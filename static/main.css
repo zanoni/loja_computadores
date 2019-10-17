@@ -1,12 +1,12 @@
 body{
+    margin: 1em 2.5%;
     background: rgb(25, 156, 196);
-    margin: 0;
 }
 .cabecalho{
-    margin: auto;
     width: 100%;
     background: #fff;
     height: 6em;
+    border-radius: 12px;
 }   
 .cabecalho .logo, .cabecalho .menu{
     float: left;
@@ -19,10 +19,11 @@ body{
     width: 600px;
 }
 .cabecalho .menu ul li{
-    display: inline-block;    
+    display: inline-block;  
+    background: rgb(25, 156, 196);
     text-transform: uppercase;
-    padding: 0.5em 1em;
-    
+    padding: 0.5em 1em;        
+    border-radius: 6px;
 }
 .cabecalho .menu ul li:hover{
     background: #fff;
@@ -36,9 +37,11 @@ body{
     color: #fff;
     font-size: 14px;
 }   
-
 #body{
     width: 80%;
     margin: 2em auto;
     border: 1px solid #000;
+}
+.bloco{
+    background: #fff;
 }
