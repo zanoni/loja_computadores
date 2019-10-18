@@ -49,5 +49,9 @@ body{
     margin: auto;
 }
 .tabelas{
-    
+    margin: auto;
+    width: 60%;
+}
+.tabela_img{
+    height: 6em;
 }
