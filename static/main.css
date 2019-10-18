@@ -1,6 +1,6 @@
 body{
     margin: 1em 2.5%;
-    background: rgb(25, 156, 196);
+    background: #0082BF;
 }
 .cabecalho{
     width: 100%;
@@ -44,4 +44,7 @@ body{
 }
 .bloco{
     background: #fff;
+}
+.compra{
+    margin: auto;
 }
