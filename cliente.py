@@ -1,3 +1,4 @@
+from flask import Flask, session
 class Cliente:
     def __init__(self):
         self.__nome = ''
@@ -25,3 +26,11 @@ class Cliente:
     def senha(self, senha):
         self.__senha = senha
     
+    def autentica(self, usuario, senha):
+        autentica = self.__email == usuario and self.__senha == senha
+        #fazer um select pra instanciar a classe cliente e para validar o usuario
+        if autentica:
+
+            session['logado'] = 
+            
+
