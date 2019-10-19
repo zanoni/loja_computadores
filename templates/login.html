@@ -1,7 +1,15 @@
 {% extends "main.html" %}
 {% block conteudo %}
-    <form action="" method=""> 
-    
-    </form>
-
+<form action="/">
+    <fieldset class="input_login">
+        <legend>Login</legend>
+        <label>Email: </label>
+        <input type="text" placeholder="Email">
+        <br>
+        <label>Senha: </label>
+        <input type="password" placeholder="Senha">
+    </fieldset>
+    <input type="submit" value="Enviar informações ao site">
+    <input type="reset" value="Limpar campo">
+</form>
 {% endblock %}
