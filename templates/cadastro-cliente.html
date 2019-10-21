@@ -1,15 +1,49 @@
-{% extends "main.html" %}
-{% block conteudo %}
-<form action="/login">
-    <fieldset class="input_login">
-        <legend>Cadastrar-se</legend>
-        <label>Email: </label>
-        <input type="text" placeholder="Email" required>
-        <br>
-        <label>Senha: </label>
-        <input type="password" placeholder="Senha" required>
-    </fieldset>
-    <input type="submit" value="Cadastrar">
-    <input type="reset" value="Limpar campo">
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v3.8.5">
+        <title>Loja de Computadores - {{ titulo_pagina }}</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Bootstrap core CSS -->
+        <link href="./Signin Template · Bootstrap_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+        <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+            }
+        }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="./Signin Template · Bootstrap_files/signin.css" rel="stylesheet">
+    </head>
+    <body class="text-center">
+        <form class="form-signin" action="/login">
+            <img class="mb-4" src="./Signin Template · Bootstrap_files/bootstrap-solid.svg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
+            <label for="inputEmail" class="sr-only">Email</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
+            <label for="inputPassword" class="sr-only">Senha</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+            <p class="mt-5 mb-3 text-muted">© Loja de Computadores</p>
+        </form>
+    </body>
+</html>
