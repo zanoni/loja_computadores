@@ -24,6 +24,7 @@ body{
     text-transform: uppercase;
     padding: 0.5em 1em;        
     border-radius: 6px;
+    margin: 2em auto;
 }
 .cabecalho .menu ul li:hover{
     background: #fff;

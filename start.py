@@ -1,10 +1,15 @@
 from flask import Flask, render_template, request, redirect, session
 import MySQLdb
+import json
 from models.cliente import Cliente
 from dao.cliente_dao import ClienteDao 
 from dao.produto_dao import ProdutoDao
 from models.produto import Produto
 from dao.compra_dao import CompraDao
+from models.itens_compra import ItensCompra
+from models.compra import Compra
+from dao.item_compra_dao import ItemCompraDao
+
 
 
 
@@ -14,13 +19,13 @@ app.secret_key = 'LojinhaPC'
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('cadastro-cliente.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
 
-@app.route('/autenticar')#, methods=['POST']
+@app.route('/autenticar', methods=['POST'])
 def autenticacao():
     cliente_dao = ClienteDao()
     cli = Cliente()
@@ -45,7 +50,7 @@ def cadastro_cliente_salvar():
         cliente.cadastra_cliente(cliente, request.form['nome'], request.form['email'], request.form['senha'])
         dao_cliente.insert_cliente(cliente)
 
-        return redirect('login.html')
+        return redirect('/login')
     except:
         return 'Erro no cadastro'
 ####################################################################### 
@@ -53,16 +58,41 @@ def cadastro_cliente_salvar():
 @app.route('/comprar')
 def comprar():
     dao_produto = ProdutoDao()
-    img_test = dao_produto.imagem_produto_db()
-    produtos = dao_produto.select_produtos()
 
-    return render_template('compra.html', produtos = produtos, img_test = img_test)
+    produtos = dao_produto.select_produtos()    
+    return render_template('compra.html', produtos = produtos)
 
-@app.route('/comprar/salvar', methods=['POST'])
+
+@app.route('/comprar/salvar')#, methods=['POST']
 def compra_salvar():
-    dao_compra = CompraDao()
-    #receber a lista com os produtos selecionados no front (id dos produtos)
-    compra = dao_compra.insert_compra(200.00, 2) # Criar e Chamar o método que calcula o valor total e pegar o id do cliente na sessao usando select_por_email(self, email)
+
+    try:
+        dao_compra = CompraDao()    
+        monta_ls = ItensCompra()
+        compras = Compra()
+        cliente_dao = ClienteDao()
+        produtos_dao = ProdutoDao()
+        dao_item_compra = ItemCompraDao()
+
+        produtos_selecionados = monta_ls.monta_lista(3, 4, 5, 6, 7, 8, 9)
+        #request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1']
+        produtos_bd = []
+        for i in produtos_selecionados:
+            produtos_bd.append(produtos_dao.select_produto_por_id(i))
+
+        valor_total = compras.calcula_total(produtos_bd)
+            
+        email_cliente = json.loads(session['logado'])
+        cliente = cliente_dao.select_por_email(email_cliente)
+        id_cliente = cliente[0]
+
+        id_compra = dao_compra.insert_compra(valor_total, id_cliente)
+
+        dao_item_compra.salva_produtos_compra(produtos_bd, id_compra)
+    
+    except:
+        print('Deu ruim!!!!!!!!!!!!!!!')
+   
     #criar os itens da compra e adicionar um a um no banco de dados
     return redirect('compra.html')
 
@@ -72,7 +102,6 @@ def lista_compras():
 
     #realizar um group by dos produtos pelo id da compra buscando pelo id do cliente
     return render_template('lista-compras.html')
-
 
 
 app.run()

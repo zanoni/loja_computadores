@@ -11,7 +11,7 @@ class ProdutoDao:
         cursor = dao_bd.cursor()
 
         try:           
-            cursor.execute('SELECT * FROM Produto WHERE id = {id}'.format(id_))            
+            cursor.execute('SELECT * FROM Produto WHERE ID = {}'.format(id_))            
             produto = cursor.fetchall()
             print("select com sucesso")
             return produto
@@ -19,13 +19,13 @@ class ProdutoDao:
             print("erro no select")
             dao_bd.rollback()
 
-        dao_bd.encerra_bd(dao)
+        dao.encerra_bd(dao_bd)
     
     def select_produtos(self):
         dao = ConnectBd()
         dao_bd = dao.inicia_conexao('mysql.zuplae.com', 'zuplae11', 'grupo06', 'zuplae11')
         cursor = dao_bd.cursor()
-        produtos = []
+        produtos = []       
 
         try:
             cursor.execute('SELECT * FROM Produto')
