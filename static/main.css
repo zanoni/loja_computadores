@@ -37,6 +37,9 @@ body{
     color: #fff;
     font-size: 14px;
 }   
+.cabecalho .login{
+    float: right;
+}   
 #body{
     width: 80%;
     margin: 2em auto;
@@ -54,4 +57,7 @@ body{
 }
 .tabela_img{
     height: 6em;
+}
+.input_login input{
+    width: 50%;
 }
