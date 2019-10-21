@@ -39,3 +39,5 @@ class ProdutoDao:
             print("erro no insert")
             dao_bd.rollback()
             dao.encerra_bd(dao_bd)
+        
+    

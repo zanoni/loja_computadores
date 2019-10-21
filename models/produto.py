@@ -32,3 +32,6 @@ class Produto:
     @img.setter
     def img(self, img):
         self.__img = img
+
+
+    
