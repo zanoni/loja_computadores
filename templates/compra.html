@@ -3,15 +3,25 @@
 <div class="compra">
     
     
-    {% for i in produtos %}    
+    {% for i in produtos  %}    
     
+    {% if i[2] == 1 %}        
     <select>        
-        {% if i[2] == 1 %}        
-            <option value="i[0]"> i[1] </option>            
-        {% endif %}
-    </select>
-    <br>
+            <option value="i[0]">{{ i[1] }}</option>         
+            
+        </select>
+    {% endif %}
+    
     {% endfor %}
-    <br>
+    <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+              </div>
+            </div>
+    </form>
 
 {% endblock %}
