@@ -1,6 +1,7 @@
 import MySQLdb
 from flask import Flask
 from dao.connect_bd import ConnectBd
+from models.produto import Produto
 class ProdutoDao:
 
     
@@ -40,4 +41,15 @@ class ProdutoDao:
             dao_bd.rollback()
             dao.encerra_bd(dao_bd)
         
-    
+    def imagem_produto_db(self):
+        img_produto = []
+        conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae11", passwd="grupo06", database="zuplae11")
+        cursor = conexao.cursor()
+        cursor.execute('SELECT Imagem FROM Produto') 
+        img_produto = []
+        for i in cursor.fetchall():
+            produto = Produto()
+            produto.img = i
+            img_produto.append(produto.img)
+        conexao.close()
+        return img_produto    

@@ -1,60 +1,89 @@
 {% extends "main.html" %}
 {% block conteudo %}
-<div class="compra">
-    <select>
-        <option>Informe o processador</option>
-        <!-- inicio for it -->
-            <option>Rio de Janeiro</option>
-        <!-- termino for it -->
-    </select>
-    <br>
-    <br>
-    <select>
-        <option>Informe a placa mãe</option>
-        <!-- inicio for it -->
-            <option>Rio de Janeiro</option>
-        <!-- termino for it -->
-    </select>
-    <br>
-    <br>
-    <select>
-        <option>Informe a memória RAM</option>
-        <!-- inicio for it -->
-            <option>Rio de Janeiro</option>
-        <!-- termino for it -->
-            op
-    </select>
-    <br>
-    <br>
-    <select>
-        <option>Informe a placa de vídeo</option>
-        <!-- inicio for it -->
-            <option>Rio de Janeiro</option>
-        <!-- termino for it -->
-    </select>
-    <br>
-    <br>
-    <select>
-        <option>Informe a memória de amarzenamento</option>
-        <!-- inicio for it -->
-            <option>Rio de Janeiro</option>
-        <!-- termino for it -->
-    </select>
-    <br>
-    <br>
-    <select>
-        <option>Informe o gabinete</option>
-        <!-- inicio for it -->
-            <option>Rio de Janeiro</option>
-        <!-- termino for it -->
-    </select>
-    <br>
-    <br>
-    <select>
-        <option>Informe a fonte</option>
-        <!-- inicio for it -->
-            <option>Rio de Janeiro</option>
-        <!-- termino for it -->
-    </select>
-</div>
+
+<form action="/comprar/salvar" method="POST">
+    <div class="form-row">        
+            <div class="form-group col-md-6">
+                <label for="">Processadores</label>
+                
+                <select name="processadores" class="custom-select" required>
+                    <option>Selecione</option>
+                    {% for i in produtos  %}   
+                    {% if i[2] == 1 %}
+                    <div>
+                        <option style="image-rendering: ../static/img/{{img_test[1][0]}}" value="{{i[0]}}">{{ i[1] }}</option>              
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                    <label for="">Placa-Mãe</label>
+                    <select name="placa_mae" class="custom-select" required>
+                        <option>Selecione</option>
+                        {% for i in produtos  %}   
+                        {% if i[2] == 2 %}
+                        <option value="{{i[0]}}">{{ i[1] }}</option>                      
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+            </div>
+            <div class="form-group col-md-6">
+                    <label for="">Memória RAM</label>
+                    <select name="memoria_ram" class="custom-select" required>
+                        <option>Selecione</option>
+                        {% for i in produtos  %}   
+                        {% if i[2] == 3 %}
+                        <option value="{{i[0]}}">{{ i[1] }}</option>                      
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+            </div>
+            <div class="form-group col-md-6">
+                    <label for="">Placa de Vídeo</label>
+                    <select name="placa_de_video" class="custom-select" required>
+                        <option>Selecione</option>
+                        {% for i in produtos  %}   
+                        {% if i[2] == 4 %}
+                        <option value="{{i[0]}}">{{ i[1] }}</option>                      
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+            </div> 
+            <div class="form-group col-md-6">
+                    <label for="">HD</label>
+                    <select name="hd" class="custom-select" required>
+                        <option>Selecione</option>
+                        {% for i in produtos  %}   
+                        {% if i[2] == 5 %}
+                        <option value="{{i[0]}}">{{ i[1] }}</option>                      
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+            </div>       
+            <div class="form-group col-md-6">
+                    <label for="">Gabinete</label>
+                    <select name="gabinete" class="custom-select" required>
+                        <option>Selecione</option>
+                        {% for i in produtos  %}   
+                        {% if i[2] == 6 %}
+                        <option value="{{i[0]}}">{{ i[1] }}</option>                      
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+            </div>       
+            <div class="form-group col-md-6">
+                    <label for="">Fonte</label>
+                    <select name="fonte" class="custom-select" required>
+                        <option>Selecione</option>
+                        {% for i in produtos  %}   
+                        {% if i[2] == 7 %}
+                        <option value="{{i[0]}}">{{ i[1] }}</option>                      
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+            </div>                     
+    </div>
+</form>
+
 {% endblock %}

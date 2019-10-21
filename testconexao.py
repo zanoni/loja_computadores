@@ -9,7 +9,7 @@ def imagem_produto_db():
     conexao = MySQLdb.connect(host="mysql.zuplae.com", user="zuplae11", passwd="grupo06", database="zuplae11")
     cursor = conexao.cursor()
     cursor.execute('SELECT Imagem FROM Produto') 
-    img = []
+    img_produto = []
     for i in cursor.fetchall():
         produto = Produto()
         produto.img = i
@@ -22,6 +22,8 @@ def imagem_produto_db():
 def imagem_test():
     img_test = imagem_produto_db()
     return render_template('teste.html',img_test = img_test)
+
+    
 
 
 

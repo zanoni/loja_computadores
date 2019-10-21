@@ -12,19 +12,20 @@ from dao.item_compra_dao import ItemCompraDao
 
 
 
+
 app= Flask(__name__)
 app.secret_key = 'LojinhaPC'
 
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('cadastro-cliente.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
 
-@app.route('/autenticar')#, methods=['POST']
+@app.route('/autenticar', methods=['POST'])
 def autenticacao():
     cliente_dao = ClienteDao()
     cli = Cliente()
@@ -49,7 +50,7 @@ def cadastro_cliente_salvar():
         cliente.cadastra_cliente(cliente, request.form['nome'], request.form['email'], request.form['senha'])
         dao_cliente.insert_cliente(cliente)
 
-        return redirect('login.html')
+        return redirect('/login')
     except:
         return 'Erro no cadastro'
 ####################################################################### 
@@ -57,8 +58,10 @@ def cadastro_cliente_salvar():
 @app.route('/comprar')
 def comprar():
     dao_produto = ProdutoDao()
+
     produtos = dao_produto.select_produtos()    
     return render_template('compra.html', produtos = produtos)
+
 
 @app.route('/comprar/salvar')#, methods=['POST']
 def compra_salvar():
