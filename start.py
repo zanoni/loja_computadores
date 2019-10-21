@@ -18,12 +18,16 @@ app.secret_key = 'LojinhaPC'
 
 
 @app.route('/')
-def home():
+def cadastro():
     return render_template('cadastro-cliente.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 @app.route('/autenticar', methods=['POST'])
 def autenticacao():
@@ -33,13 +37,9 @@ def autenticacao():
         cliente = cliente_dao.select_por_email('lais@teste.com')    #request.form['usuario']
         session['logado'] = cli.autentica(cliente, '1234')  #cliente, request.form['senha']
         print(session['logado'])
-        return render_template('compra.html')
+        return redirect('/home')
     except:
         return 'Login Inválido'
-
-@app.route('/cadastrar-cliente')
-def cadastro_cliente():
-    return render_template('cadastro-cliente.html')
 
 
 @app.route('/cadastrar-cliente-salvar', methods=['POST'])
@@ -58,8 +58,8 @@ def cadastro_cliente_salvar():
 @app.route('/comprar')
 def comprar():
     dao_produto = ProdutoDao()
-
     produtos = dao_produto.select_produtos()    
+    
     return render_template('compra.html', produtos = produtos)
 
 
