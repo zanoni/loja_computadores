@@ -20,7 +20,7 @@ class ProdutoDao:
 
         dao_bd.encerra_bd(dao)
     
-    def select_produtos(self, id_categoria):
+    def select_produtos(self):
         dao = ConnectBd()
         dao_bd = dao.inicia_conexao('mysql.zuplae.com', 'zuplae11', 'grupo06', 'zuplae11')
         cursor = dao_bd.cursor()
