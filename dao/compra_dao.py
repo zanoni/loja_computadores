@@ -20,5 +20,5 @@ class CompraDao:
             dao_bd.rollback()
         
         dao_bd.encerra_bd(dao)
-
+    
         

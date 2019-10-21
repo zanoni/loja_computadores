@@ -68,6 +68,8 @@ def compra_salvar():
 
 @app.route('/lista-compras')
 def lista_compras():
+    
+
     #realizar um group by dos produtos pelo id da compra buscando pelo id do cliente
     return render_template('lista-compras.html')
 
