@@ -35,14 +35,18 @@
         <link href="./Signin Template · Bootstrap_files/signin.css" rel="stylesheet">
     </head>
     <body class="text-center">
-        <form class="form-signin" action="/login">
+        <form class="form-signin" action="/cadastrar-cliente-salvar" method="POST">
             <img class="mb-4" src="./Signin Template · Bootstrap_files/bootstrap-solid.svg" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
+            <label for="inputNome" class="sr-only">Nome</label>
+            <input name="nome" type="text" id="inputEmail" class="form-control" placeholder="Nome" required="" autofocus="">
             <label for="inputEmail" class="sr-only">Email</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
-            <label for="inputPassword" class="sr-only">Senha</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
+            <label for="inputSenha" class="sr-only">Senha</label>
+            <input name="senha" type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+            <br><br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+            <a href="/login">Já tem cadastro? Faça login.</a>
             <p class="mt-5 mb-3 text-muted">© Loja de Computadores</p>
         </form>
     </body>
