@@ -7,6 +7,7 @@ from models.produto import Produto
 from dao.compra_dao import CompraDao
 
 
+
 app= Flask(__name__)
 app.secret_key = 'LojinhaPC'
 
@@ -52,9 +53,10 @@ def cadastro_cliente_salvar():
 @app.route('/comprar')
 def comprar():
     dao_produto = ProdutoDao()
+    img_test = dao_produto.imagem_produto_db()
     produtos = dao_produto.select_produtos()
 
-    return render_template('compra.html', produtos = produtos)
+    return render_template('compra.html', produtos = produtos, img_test = img_test)
 
 @app.route('/comprar/salvar', methods=['POST'])
 def compra_salvar():
