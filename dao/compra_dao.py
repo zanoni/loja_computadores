@@ -10,6 +10,7 @@ class CompraDao:
 
         try:           
             cursor.execute('INSERT INTO Compra (Valor_TOTAL, Cliente_ID) VALUES ({}, {})'.format(valor_total, cliente_id))
+            dao_bd.commit()
             cursor.execute('SELECT * FROM Compra WHERE Cliente_ID = {} ORDER BY ID DESC LIMIT 1'.format(cliente_id))
             print("select com sucesso")
             dao_bd.encerra_bd(dao)
