@@ -9,13 +9,13 @@ class ItemCompraDao:
 
         try:     
             for i in produtos_bd:      
-                cursor.execute('INSERT INTO Item_Compra (Quantidade, Compra_ID, Produto_ID) VALUES ({}, {}, {})'.format(1, id_compra, i[0][0]))
+                cursor.execute('INSERT INTO Item_Compra (Quantidade, Compra_ID, Produto_ID) VALUES (1, {}, {})'.format(id_compra[0][0], i[0][0]))
                 dao_bd.commit()            
-            print("select com sucesso")
-            dao_bd.encerra_bd(dao)
+            print("insert item_produto com sucesso")
+            dao.encerra_bd(dao_bd)
             return cursor.fetchall()           
         except:
-            print("erro no select")
+            print("erro insert item_produto")
             dao_bd.rollback()
         
         dao.encerra_bd(dao_bd)
