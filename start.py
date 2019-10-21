@@ -52,7 +52,8 @@ def cadastro_cliente_salvar():
 @app.route('/comprar')
 def comprar():
     dao_produto = ProdutoDao()
-    produtos = dao_produto.select_produtos(1)
+    produtos = dao_produto.select_produtos()
+
     return render_template('compra.html', produtos = produtos)
 
 @app.route('/comprar/salvar', methods=['POST'])
