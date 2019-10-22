@@ -53,7 +53,7 @@ def cadastro_cliente_salvar():
         return redirect('/login')
     except:
         return 'Erro no cadastro'
-####################################################################### 
+ 
 
 @app.route('/comprar')
 def comprar():
@@ -97,10 +97,10 @@ def compra_salvar():
     return redirect('/comprar')
 
 
-@app.route('/alterar-cliente')
-def alterar_cliente():    
-    cliente_dict = json.loads(session['logado'])
-    email_cliente = cliente_dict["_Cliente__email"]
+# @app.route('/alterar-cliente')
+# def alterar_cliente():    
+#     cliente_dict = json.loads(session['logado'])
+#     email_cliente = cliente_dict["_Cliente__email"]
    
 
 @app.route('/sair')
