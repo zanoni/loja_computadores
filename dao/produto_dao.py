@@ -11,7 +11,7 @@ class ProdutoDao:
         cursor = dao_bd.cursor()
 
         try:           
-            cursor.execute('SELECT * FROM Produto WHERE ID = {}'.format(id_))            
+            cursor.execute('SELECT * FROM Produto WHERE ID = {};'.format(id_))            
             produto = cursor.fetchall()
             print("select com sucesso")
             return produto

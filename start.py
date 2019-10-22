@@ -63,9 +63,9 @@ def comprar():
     return render_template('compra.html', produtos = produtos)
 
 
-@app.route('/comprar/salvar')#, methods=['POST']
+@app.route('/comprar/salvar', methods=['POST'])
 def compra_salvar():
-
+    produtos_bd = []
     try:
         dao_compra = CompraDao()    
         monta_ls = ItensCompra()
@@ -75,7 +75,7 @@ def compra_salvar():
         dao_item_compra = ItemCompraDao()
 
         produtos_selecionados = monta_ls.monta_lista(request.form['processadores'], request.form['placa_mae'], request.form['memoria_ram'], request.form['placa_de_video'], request.form['hd'], request.form['gabinete'], request.form['fonte'])
-        produtos_bd = []
+        
         for i in produtos_selecionados:
             produtos_bd.append(produtos_dao.select_produto_por_id(i))
 
@@ -89,22 +89,16 @@ def compra_salvar():
         id_compra = dao_compra.insert_compra(valor_total, id_cliente)
 
         dao_item_compra.salva_produtos_compra(produtos_bd, id_compra)
-    
+        
+        return render_template('lista-compras.html', lista = produtos_bd)
     except:
         print('Deu ruim!!!!!!!!!!!!!!!')
    
-    return redirect('compra.html')
-
-@app.route('/lista-compras')
-def lista_compras():    
-
-    #realizar um group by dos produtos pelo id da compra buscando pelo id do cliente
-    return render_template('lista-compras.html')
+    return redirect('/comprar')
 
 
 @app.route('/alterar-cliente')
-def alterar_cliente():
-    
+def alterar_cliente():    
     cliente_dict = json.loads(session['logado'])
     email_cliente = cliente_dict["_Cliente__email"]
    

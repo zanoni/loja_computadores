@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block conteudo %}
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in lista %}
+        <tr>
+            <td>{{i[0][1]}}</td>
+            <td>{{i[0][2]}}</td>
+            <td>R$ {{i[0][3]}}</td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
