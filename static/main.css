@@ -1,9 +1,9 @@
 body{   
-    background: #0082BF;   
+    background: #778899;   
 }
 .cabecalho{
     width: 100%;
-    background: #fff;
+    background: #1E90FF;
     height: 6em;    
 }   
 .cabecalho .logo, .cabecalho .menu{
@@ -11,7 +11,8 @@ body{
 }
 .cabecalho .logo img{
     margin: auto;
-    width: 6em;
+    width: 7em;
+    padding: 1em 1em 1em 2em;
 }
 .cabecalho .menu{
     width: 90%;
@@ -21,9 +22,10 @@ body{
     margin: 2em auto;
 
 }
-.cabecalho .menu ul li a {    
-    background: #0082BF;
-    color: black;
+.cabecalho .menu ul li a {  
+    display: inline-block;  
+    background: black;
+    color: white;
     text-transform: uppercase;
     padding: 0.5em 1em;
     border-radius: 6px;    
@@ -32,33 +34,16 @@ body{
         -ms-transition: all 0.3s ease-in 0s;
          -o-transition: all 0.3s ease-in 0s;
             transition: all 0.3s ease-in 0s;
+    margin: auto;
 }
 
 .cabecalho .menu ul li a:hover{
-    background: black;
-    color: #0082bf;
+    background: #778899;
+    color: black;
     text-decoration: none;
+
 }
-/* .cabecalho .menu ul li{  
-    display : inline-block;   
-    background: rgb(25, 156, 196);
-    text-transform: uppercase;
-    padding: 0.5em 1em;        
-    border-radius: 6px;
-    margin: 2em auto;
-}
-.cabecalho .menu ul li:hover{
-    background: #fff;
-}
-.cabecalho .menu ul li:hover a{
-    color: #000;
-    
-}
-.cabecalho .menu ul li a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 14px;
-}    */
+
 .cabecalho .login{
     float: right;
 }  
@@ -76,17 +61,27 @@ body{
 #body{
     width: 80%;
     margin: 2em auto;
-    border: 1px solid #000;
+    
+}
+form{
+    padding: 30px;
+    margin: auto;
 }
 .bloco{
-    background: #fff;
+    background: white;
+    width: 40%;
+    border-radius: 12px;
 }
+.bsalvar {
+    margin: auto;
+}
+
 .compra{
     margin: auto;
 }
 .tabelas{
     margin: auto;
-    width: 60%;
+    width: 80%;
 }
 .tabela_img{
     height: 6em;
