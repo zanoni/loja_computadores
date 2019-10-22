@@ -74,7 +74,7 @@ def compra_salvar():
         produtos_dao = ProdutoDao()
         dao_item_compra = ItemCompraDao()
 
-        produtos_selecionados = monta_ls.monta_lista(request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'])
+        produtos_selecionados = monta_ls.monta_lista(request.form['processadores'], request.form['placa_mae'], request.form['memoria_ram'], request.form['placa_de_video'], request.form['hd'], request.form['gabinete'], request.form['fonte'])
         produtos_bd = []
         for i in produtos_selecionados:
             produtos_bd.append(produtos_dao.select_produto_por_id(i))
@@ -100,6 +100,13 @@ def lista_compras():
 
     #realizar um group by dos produtos pelo id da compra buscando pelo id do cliente
     return render_template('lista-compras.html')
+
+@app.route('/alterar-cliente')
+def alterar_cliente():
+    
+    cliente_dict = json.loads(session['logado'])
+    email_cliente = cliente_dict["_Cliente__email"]
+   
 
 
 app.run()

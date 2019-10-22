@@ -35,3 +35,30 @@ class ClienteDao:
         except:
             dao.encerra_bd(dao_bd)
             return None
+
+    def update_cliente(self):
+    
+        dao = ConnectBd()
+        dao_bd = dao.inicia_conexao('mysql.zuplae.com', 'zuplae11', 'grupo06', 'zuplae11')
+        cursor = dao_bd.cursor()     
+        try:
+            cursor.execute("UPDATE Cliente SET nome='{}', cpf='{}', data_nascimento='{}' WHERE ID={}"
+            .format(cliente.nome, cliente.cpf, cliente.nascimento , cliente.id))
+            dao_bd.commit()
+            dao.encerra_bd(dao_bd)                  
+        except:
+            dao.encerra_bd(dao_bd)
+            return None
+            
+    
+    def delete_cliente(self, id_):        
+        dao = ConnectBd()
+        dao_bd = dao.inicia_conexao('mysql.zuplae.com', 'zuplae11', 'grupo06', 'zuplae11')
+        cursor = dao_bd.cursor()     
+        try:
+            cursor.execute("DELETE FROM Cliente WHERE id={}".format(id_))
+            dao_bd.commit()
+            dao.encerra_bd(dao_bd)                  
+        except:
+            dao.encerra_bd(dao_bd)
+            return None
