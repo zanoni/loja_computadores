@@ -18,12 +18,16 @@ app.secret_key = 'LojinhaPC'
 
 
 @app.route('/')
-def home():
+def cadastro():
     return render_template('cadastro-cliente.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 @app.route('/autenticar', methods=['POST'])
 def autenticacao():
@@ -32,14 +36,10 @@ def autenticacao():
     try:
         cliente = cliente_dao.select_por_email('lais@teste.com')    #request.form['usuario']
         session['logado'] = cli.autentica(cliente, '1234')  #cliente, request.form['senha']
-        print(session['logado'])
-        return render_template('compra.html')
+        
+        return redirect('/home')
     except:
         return 'Login Inválido'
-
-@app.route('/cadastrar-cliente')
-def cadastro_cliente():
-    return render_template('cadastro-cliente.html')
 
 
 @app.route('/cadastrar-cliente-salvar', methods=['POST'])
@@ -58,8 +58,8 @@ def cadastro_cliente_salvar():
 @app.route('/comprar')
 def comprar():
     dao_produto = ProdutoDao()
-
     produtos = dao_produto.select_produtos()    
+    
     return render_template('compra.html', produtos = produtos)
 
 
@@ -74,17 +74,17 @@ def compra_salvar():
         produtos_dao = ProdutoDao()
         dao_item_compra = ItemCompraDao()
 
-        produtos_selecionados = monta_ls.monta_lista(3, 4, 5, 6, 7, 8, 9)
-        #request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1']
+        produtos_selecionados = monta_ls.monta_lista(request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'], request.form['campo1'])
         produtos_bd = []
         for i in produtos_selecionados:
             produtos_bd.append(produtos_dao.select_produto_por_id(i))
 
         valor_total = compras.calcula_total(produtos_bd)
             
-        email_cliente = json.loads(session['logado'])
+        cliente_dict = json.loads(session['logado'])
+        email_cliente = cliente_dict["_Cliente__email"]
         cliente = cliente_dao.select_por_email(email_cliente)
-        id_cliente = cliente[0]
+        id_cliente = cliente[0][0]
 
         id_compra = dao_compra.insert_compra(valor_total, id_cliente)
 
@@ -93,12 +93,10 @@ def compra_salvar():
     except:
         print('Deu ruim!!!!!!!!!!!!!!!')
    
-    #criar os itens da compra e adicionar um a um no banco de dados
     return redirect('compra.html')
 
 @app.route('/lista-compras')
-def lista_compras():
-    
+def lista_compras():    
 
     #realizar um group by dos produtos pelo id da compra buscando pelo id do cliente
     return render_template('lista-compras.html')

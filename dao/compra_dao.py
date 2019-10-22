@@ -13,7 +13,7 @@ class CompraDao:
             dao_bd.commit()
             cursor.execute('SELECT * FROM Compra WHERE Cliente_ID = {} ORDER BY ID DESC LIMIT 1'.format(cliente_id))
             print("select com sucesso")
-            dao_bd.encerra_bd(dao)
+            dao.encerra_bd(dao_bd)
             return cursor.fetchall()           
         except:
             print("erro no select")
