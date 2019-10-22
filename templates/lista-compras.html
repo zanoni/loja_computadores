@@ -1,11 +1,11 @@
 {% extends "main.html" %}
 {% block conteudo %}
-<table>
-    <thead>
+<table class="table">
+    <thead class="thead-dark">
         <tr>
-            <th>Nome</th>
-            <th>Categoria</th>
-            <th>Preço</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Preço</th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +17,11 @@
             
         </tr>
         {% endfor %}
+        <tr>
+            <td>Valor Total da Compra</td>
+            <td></td>
+            <td>R$ {{valor_total}}</td>
+        </tr>
     </tbody>
 </table>
 {% endblock %}

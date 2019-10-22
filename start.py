@@ -90,7 +90,7 @@ def compra_salvar():
 
         dao_item_compra.salva_produtos_compra(produtos_bd, id_compra)
         
-        return render_template('lista-compras.html', lista = produtos_bd)
+        return render_template('lista-compras.html', lista = produtos_bd, valor_total=valor_total)
     except:
         print('Deu ruim!!!!!!!!!!!!!!!')
    
