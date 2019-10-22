@@ -52,6 +52,12 @@ body{
     float: right; 
     padding: 0 1em;
 
+}.carouselTamanho{
+    width: 800px;
+    height: 500px;
+    padding: 2em;
+    margin: auto;
+   
 }
 
 #sair{
@@ -88,4 +94,8 @@ form{
 }
 .input_login input{
     width: 50%;
+}
+.home{
+    text-align: center;
+    padding: 50px;
 }
