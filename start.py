@@ -103,5 +103,10 @@ def lista_compras():
     #realizar um group by dos produtos pelo id da compra buscando pelo id do cliente
     return render_template('lista-compras.html')
 
+@app.route('/sair')
+def sair():
+    session['logado'] = None
+    return redirect('/')
+
 
 app.run()
