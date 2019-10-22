@@ -43,6 +43,8 @@ class Cliente:
             cliente_logado.email = cliente[0][2]
             cliente_logado.senha = cliente[0][3]
             return cliente_logado.toJSON()
+        
+        return None
 
     def cadastra_cliente(self, cliente, nome, usuario, senha):        
         cliente.nome = nome

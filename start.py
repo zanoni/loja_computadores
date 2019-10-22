@@ -33,13 +33,16 @@ def home():
 def autenticacao():
     cliente_dao = ClienteDao()
     cli = Cliente()
-    try:
-        cliente = cliente_dao.select_por_email('lais@teste.com')    #request.form['usuario']
-        session['logado'] = cli.autentica(cliente, '1234')  #cliente, request.form['senha']
-        
-        return redirect('/home')
-    except:
-        return 'Login Inválido'
+    
+    cliente = cliente_dao.select_por_email(request.form['usuario'])    #request.form['usuario']
+    session['logado'] = cli.autentica(cliente, request.form['senha'])  #cliente, request.form['senha']
+    
+    if session['logado'] is not None:
+        return redirect('/home')    
+
+    return 'Login Inválido'
+
+    
 
 
 @app.route('/cadastrar-cliente-salvar', methods=['POST'])
