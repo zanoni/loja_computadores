@@ -101,12 +101,18 @@ def lista_compras():
     #realizar um group by dos produtos pelo id da compra buscando pelo id do cliente
     return render_template('lista-compras.html')
 
+
 @app.route('/alterar-cliente')
 def alterar_cliente():
     
     cliente_dict = json.loads(session['logado'])
     email_cliente = cliente_dict["_Cliente__email"]
    
+
+@app.route('/sair')
+def sair():
+    session['logado'] = None
+    return redirect('/')
 
 
 app.run()
